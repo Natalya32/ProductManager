@@ -33,6 +33,28 @@ public class ProductManagerTest {
     }
 
     @Test
+    public void shouldSearchByWhenOneMatch() {
+
+        manager.add(prod1);
+        manager.add(prod2);
+        manager.add(prod3);
+        Product[] prod = {prod1};
+        Product[] actual = manager.searchBy("Rings");
+        Assertions.assertArrayEquals(prod, actual);
+    }
+
+    @Test
+    public void shouldSearchByWhenNoMatch() {
+
+        manager.add(prod1);
+        manager.add(prod2);
+        manager.add(prod3);
+        Product[] prod = new Product[0];
+        Product[] actual = manager.searchBy("Vape");
+        Assertions.assertArrayEquals(prod, actual);
+    }
+
+    @Test
     public void shouldRemoveById() {
 
         manager.add(prod1);
